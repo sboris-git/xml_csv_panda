@@ -37,11 +37,10 @@ def xml_pd_parse():
         raw = []
 
         for col in df_cols:
-            s_name = node.attrib.get(col)
             raw.append(node.find(col).text if node is not None else None)
         # ToDo to set a limit of records to be processed - uncomment if block and change an integer
-        if i > 1000:
-            break
+        # if i > 1000:
+        #     break
         out_df = out_df.append(pd.Series(raw, index=df_cols),
                                ignore_index=True)
         i += 1
